@@ -2,24 +2,11 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
+
 # GET function: Runs hello world on your local host
 @app.route("/")
 def hello_world():
     return "<p>This is a test for Hello, World!</p>"
-
-
-# GET function: Adding a sub-level to the root of the URL
-@app.route("/about/")
-def about():
-    return "<p>About the author</p>"
-
-
-# GET function: Taking in a parameter using the URL
-@app.route("/square/<number>", methods=['GET'])
-def square(number):
-    number = int(number)        # This step is required to change the type to an Integer
-    number = number * number
-    return "<p>" + str(number) + "</p>"
 
 
 # Users Functionality
