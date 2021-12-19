@@ -18,43 +18,38 @@ class Database:
         self.films.append(Film('The Porn Identity', 'comedy', 2011))
         self.films.append(Film('Good Will Humping', 'thriller', 1997))
 
+    def get_all_films(self):
+        return self.films
 
-def get_all_films(self):
-    return self.films
+    def get_film_by_title(self, title):
+        for film in self.films:
+            if film.title == title:
+                return film
+        return None
 
+    def get_film_by_genre(self, genre):
+        for film in self.films:
+            if film.genre == genre:
+                return film
+        return None
 
-def get_film_by_title(self, title):
-    for film in self.films:
-        if film.title == title:
-            return film
-    return None
+    def get_film_by_year(self, year):
+        for film in self.films:
+            if film.year == year:
+                return film
+        return None
 
+    def get_user_by_email(self, email):
+        for user in self.users:
+            if user.email == email:
+                return user
+        return None
 
-def get_film_by_genre(self, genre):
-    for film in self.films:
-        if film.genre == genre:
-            return film
-    return None
+    def get_user_by_id(self, user_id):
+        return self.users[user_id-1]
 
-
-def get_film_by_year(self, year):
-    for film in self.films:
-        if film.year == year:
-            return film
-    return None
-
-
-def get_user_by_email(self, email):
-    for user in self.users:
-        if user.email == email:
-            return user
-    return None
-
-
-def get_user_by_id(self, user_id):
-    return self.users[user_id-1]
-
-
-def add_user(self, first_name, last_name, birthday, email, phone):
-    id = len(self.users)
-    self.users.append(User(id, first_name, last_name, birthday, email, phone))
+    def add_user(self, first_name, last_name, birthday, email, phone):
+        user_id = len(self.users)
+        user = User(user_id, first_name, last_name, birthday, email, phone)
+        self.users.append(user)
+        return user
