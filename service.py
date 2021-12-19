@@ -10,7 +10,7 @@ def hello_world():
 
 
 # Users Functionality
-@app.route("/users/", methods=['POST'])
+@app.route("/users/", methods=['GET', 'POST', 'PUT'])
 def users():
 
     # POST method for
