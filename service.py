@@ -1,6 +1,6 @@
 import os
 import secrets
-from flask import Flask, flash, request, redirect, url_for, send_from_directory
+from flask import Flask, flash, request, redirect, url_for, send_from_directory, render_template
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = '/'
@@ -46,11 +46,13 @@ def upload_file():
     </form>
     '''
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
-@app.route('/uploads/<name>')
-def download_file(name):
-    return send_from_directory(app.config["UPLOAD_FOLDER"], name)
-
+@app.route('/other')
+def other():
+    return render_template('other.html')
 
 if __name__ == "__main__":
     app.run()
