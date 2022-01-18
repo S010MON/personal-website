@@ -9,8 +9,8 @@ templates = Jinja2Templates(directory="templates/")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def root():
-    return "home.html"
+async def root(request: Request):
+    return templates.TemplateResponse('home.html', context={'request': request})
 
 
 @app.get("/form")
