@@ -7,7 +7,6 @@ class MyTestCase(unittest.TestCase):
     def test_something(self):
         self.assertEqual(True, False)  # add assertion here
 
-
     def test_post_headers_body_json(self):
         url = "http://127.0.0.1:5000/users/"
 
