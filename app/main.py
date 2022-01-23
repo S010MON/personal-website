@@ -13,6 +13,16 @@ async def root(request: Request):
     return templates.TemplateResponse('index.html', context={'request': request})
 
 
+@app.get("/page_1", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse('page_1.html', context={'request': request})
+
+
+@app.get("/page_2", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse('page_2.html', context={'request': request})
+
+
 @app.get("/form")
 def form_post(request: Request):
     result = "Type a number"
