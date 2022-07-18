@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, Request, Form
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
@@ -20,6 +20,10 @@ async def root(request: Request):
 @app.get("/page_2", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse('page_2.html', context={'request': request})
+
+@app.get("/profile_pic")
+async def profile(request: Request):
+    return FileResponse("resources/profile_img.jpg")
 
 
 @app.get("/form")
