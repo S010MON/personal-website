@@ -1,4 +1,5 @@
 import uvicorn
+import os
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
@@ -21,10 +22,6 @@ async def root(request: Request):
 async def root(request: Request):
     return templates.TemplateResponse('page_2.html', context={'request': request})
 
-@app.get("/profile_pic")
-async def profile(request: Request):
-    return FileResponse("resources/profile_img.jpg")
-
 
 @app.get("/form")
 def form_post(request: Request):
@@ -38,9 +35,9 @@ def form_post(request: Request, num: int = Form(...)):
     return templates.TemplateResponse('form.html', context={'request': request, 'result': result})
 
 
-@app.get("/")
+@app.get("/pwd")
 async def root():
-    return {"message": "Hello World"}
+    return f"{os.getcwd()}"
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
